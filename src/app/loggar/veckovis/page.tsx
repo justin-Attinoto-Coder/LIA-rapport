@@ -88,20 +88,22 @@ export default function VeckovisLoggarPage() {
           </div>
         </div>
 
-        <div className="card-gradient section-card p-8 border border-orange-100 space-y-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-800 flex items-center space-x-2">
+        <div className="card-gradient section-card p-8 border border-orange-100 dark:border-orange-900 space-y-6 mb-8">
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 flex items-center space-x-2">
             <FaPlus />
             <span>{currentLog.id ? 'Redigera Veckologg' : 'Ny Veckologg'}</span>
           </h2>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">Vecka</label>
+            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+              Vecka
+            </label>
             <input
               type="text"
               value={currentLog.week}
               onChange={(e) => setCurrentLog({ ...currentLog, week: e.target.value })}
               placeholder="t.ex. Vecka 1 (2024-01-15 - 2024-01-21)"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
             />
           </div>
 
