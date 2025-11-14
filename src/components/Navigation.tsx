@@ -96,25 +96,45 @@ export default function Navigation() {
             {/* Dark Mode Toggle */}
             <button
               onClick={toggleTheme}
-              className="ml-2 p-2 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-purple-50 dark:hover:bg-gray-700 transition-colors"
+              className="ml-2 px-3 py-2 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-purple-50 dark:hover:bg-gray-700 transition-colors flex items-center space-x-2"
               aria-label="Toggle dark mode"
             >
-              {theme === 'dark' ? <FaSun className="text-xl" /> : <FaMoon className="text-xl" />}
+              {theme === 'dark' ? (
+                <>
+                  <FaSun className="text-lg" />
+                  <span className="text-sm font-medium hidden md:inline">Light</span>
+                </>
+              ) : (
+                <>
+                  <FaMoon className="text-lg" />
+                  <span className="text-sm font-medium hidden md:inline">Dark</span>
+                </>
+              )}
             </button>
           </div>
 
-          {/* Mobile Menu Button & Dark Mode Toggle */}
-          <div className="flex items-center space-x-2">
+          {/* Mobile Menu Button & Dark Mode Toggle (Mobile Only) */}
+          <div className="flex lg:hidden items-center space-x-2">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-purple-50 dark:hover:bg-gray-700 transition-colors"
+              className="px-3 py-2 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-purple-50 dark:hover:bg-gray-700 transition-colors flex items-center space-x-2"
               aria-label="Toggle dark mode"
             >
-              {theme === 'dark' ? <FaSun className="text-xl" /> : <FaMoon className="text-xl" />}
+              {theme === 'dark' ? (
+                <>
+                  <FaSun className="text-lg" />
+                  <span className="text-sm font-medium">Light</span>
+                </>
+              ) : (
+                <>
+                  <FaMoon className="text-lg" />
+                  <span className="text-sm font-medium">Dark</span>
+                </>
+              )}
             </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-purple-50 dark:hover:bg-gray-700 transition-colors"
+              className="p-2 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-purple-50 dark:hover:bg-gray-700 transition-colors"
             >
               {isOpen ? <FaTimes className="text-2xl" /> : <FaBars className="text-2xl" />}
             </button>
