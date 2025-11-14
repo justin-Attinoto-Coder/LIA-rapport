@@ -24,7 +24,7 @@ export default function DagligLoggarPage() {
     reflections: '',
     learnings: '',
     challenges: '',
-    images: []
+    images: [],
   })
 
   useEffect(() => {
@@ -37,11 +37,11 @@ export default function DagligLoggarPage() {
   const handleSave = () => {
     const newLog = {
       ...currentLog,
-      id: currentLog.id || Date.now().toString()
+      id: currentLog.id || Date.now().toString(),
     }
 
     const updatedLogs = currentLog.id
-      ? logs.map(log => log.id === currentLog.id ? newLog : log)
+      ? logs.map((log) => (log.id === currentLog.id ? newLog : log))
       : [...logs, newLog]
 
     setLogs(updatedLogs)
@@ -54,7 +54,7 @@ export default function DagligLoggarPage() {
       reflections: '',
       learnings: '',
       challenges: '',
-      images: []
+      images: [],
     })
 
     alert('Daglig logg sparad!')
@@ -62,7 +62,7 @@ export default function DagligLoggarPage() {
 
   const handleDelete = (id: string) => {
     if (confirm('Är du säker på att du vill ta bort denna logg?')) {
-      const updatedLogs = logs.filter(log => log.id !== id)
+      const updatedLogs = logs.filter((log) => log.id !== id)
       setLogs(updatedLogs)
       localStorage.setItem('dailyLogs', JSON.stringify(updatedLogs))
     }
@@ -86,31 +86,33 @@ export default function DagligLoggarPage() {
           </div>
           <div>
             <h1 className="text-4xl font-bold gradient-text">Dagliga Loggar</h1>
-            <p className="text-gray-600 mt-2">Dokumentera dina dagliga aktiviteter och lärdomar</p>
+            <p className="text-gray-600 dark:text-gray-400 mt-2">
+              Dokumentera dina dagliga aktiviteter och lärdomar
+            </p>
           </div>
         </div>
 
         {/* Input Form */}
-        <div className="card-gradient section-card p-8 border border-blue-100 space-y-6 mb-8">
-          <h2 className="text-2xl font-bold text-gray-800 flex items-center space-x-2">
+        <div className="card-gradient section-card p-8 border border-blue-100 dark:border-blue-900 space-y-6 mb-8">
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 flex items-center space-x-2">
             <FaPlus />
             <span>{currentLog.id ? 'Redigera Logg' : 'Ny Daglig Logg'}</span>
           </h2>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
               Datum
             </label>
             <input
               type="date"
               value={currentLog.date}
               onChange={(e) => setCurrentLog({ ...currentLog, date: e.target.value })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
               Dagens uppgifter
             </label>
             <textarea
@@ -118,12 +120,12 @@ export default function DagligLoggarPage() {
               onChange={(e) => setCurrentLog({ ...currentLog, tasks: e.target.value })}
               placeholder="Beskriv vad du arbetade med idag..."
               rows={4}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
               Reflektioner
             </label>
             <textarea
@@ -131,12 +133,12 @@ export default function DagligLoggarPage() {
               onChange={(e) => setCurrentLog({ ...currentLog, reflections: e.target.value })}
               placeholder="Vad tyckte du om dagens arbete?"
               rows={3}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
               Lärdomar
             </label>
             <textarea
@@ -144,12 +146,12 @@ export default function DagligLoggarPage() {
               onChange={(e) => setCurrentLog({ ...currentLog, learnings: e.target.value })}
               placeholder="Vad lärde du dig idag?"
               rows={3}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
               Utmaningar
             </label>
             <textarea
@@ -157,7 +159,7 @@ export default function DagligLoggarPage() {
               onChange={(e) => setCurrentLog({ ...currentLog, challenges: e.target.value })}
               placeholder="Vilka utmaningar mötte du?"
               rows={3}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
             />
           </div>
 
@@ -172,68 +174,94 @@ export default function DagligLoggarPage() {
 
         {/* Logs List */}
         <div className="space-y-4">
-          <h2 className="text-2xl font-bold text-gray-800">Tidigare Loggar ({logs.length})</h2>
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100">
+            Tidigare Loggar ({logs.length})
+          </h2>
           {logs.length === 0 ? (
-            <div className="card-gradient section-card p-8 border border-gray-100 text-center">
-              <p className="text-gray-500">Inga loggar än. Skapa din första logg ovan!</p>
+            <div className="card-gradient section-card p-8 border border-gray-100 dark:border-gray-700 text-center">
+              <p className="text-gray-500 dark:text-gray-400">
+                Inga loggar än. Skapa din första logg ovan!
+              </p>
             </div>
           ) : (
-            logs.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).map((log) => (
-              <motion.div
-                key={log.id}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="card-gradient section-card p-6 border border-gray-100"
-              >
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-800">{log.date}</h3>
-                    <p className="text-sm text-gray-500">{format(new Date(log.date), 'EEEE, d MMMM yyyy')}</p>
+            logs
+              .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+              .map((log) => (
+                <motion.div
+                  key={log.id}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="card-gradient section-card p-6 border border-gray-100 dark:border-gray-700"
+                >
+                  <div className="flex justify-between items-start mb-4">
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">
+                        {log.date}
+                      </h3>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                        {format(new Date(log.date), 'EEEE, d MMMM yyyy')}
+                      </p>
+                    </div>
+                    <div className="flex space-x-2">
+                      <button
+                        onClick={() => handleEdit(log)}
+                        className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+                      >
+                        Redigera
+                      </button>
+                      <button
+                        onClick={() => handleDelete(log.id)}
+                        className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors flex items-center space-x-2"
+                      >
+                        <FaTrash />
+                      </button>
+                    </div>
                   </div>
-                  <div className="flex space-x-2">
-                    <button
-                      onClick={() => handleEdit(log)}
-                      className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
-                    >
-                      Redigera
-                    </button>
-                    <button
-                      onClick={() => handleDelete(log.id)}
-                      className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors flex items-center space-x-2"
-                    >
-                      <FaTrash />
-                    </button>
-                  </div>
-                </div>
 
-                <div className="space-y-3">
-                  {log.tasks && (
-                    <div>
-                      <h4 className="font-semibold text-gray-700">Uppgifter:</h4>
-                      <p className="text-gray-600 whitespace-pre-wrap">{log.tasks}</p>
-                    </div>
-                  )}
-                  {log.learnings && (
-                    <div>
-                      <h4 className="font-semibold text-gray-700">Lärdomar:</h4>
-                      <p className="text-gray-600 whitespace-pre-wrap">{log.learnings}</p>
-                    </div>
-                  )}
-                  {log.challenges && (
-                    <div>
-                      <h4 className="font-semibold text-gray-700">Utmaningar:</h4>
-                      <p className="text-gray-600 whitespace-pre-wrap">{log.challenges}</p>
-                    </div>
-                  )}
-                  {log.reflections && (
-                    <div>
-                      <h4 className="font-semibold text-gray-700">Reflektioner:</h4>
-                      <p className="text-gray-600 whitespace-pre-wrap">{log.reflections}</p>
-                    </div>
-                  )}
-                </div>
-              </motion.div>
-            ))
+                  <div className="space-y-3">
+                    {log.tasks && (
+                      <div>
+                        <h4 className="font-semibold text-gray-700 dark:text-gray-200">
+                          Uppgifter:
+                        </h4>
+                        <p className="text-gray-600 dark:text-gray-300 whitespace-pre-wrap">
+                          {log.tasks}
+                        </p>
+                      </div>
+                    )}
+                    {log.learnings && (
+                      <div>
+                        <h4 className="font-semibold text-gray-700 dark:text-gray-200">
+                          Lärdomar:
+                        </h4>
+                        <p className="text-gray-600 dark:text-gray-300 whitespace-pre-wrap">
+                          {log.learnings}
+                        </p>
+                      </div>
+                    )}
+                    {log.challenges && (
+                      <div>
+                        <h4 className="font-semibold text-gray-700 dark:text-gray-200">
+                          Utmaningar:
+                        </h4>
+                        <p className="text-gray-600 dark:text-gray-300 whitespace-pre-wrap">
+                          {log.challenges}
+                        </p>
+                      </div>
+                    )}
+                    {log.reflections && (
+                      <div>
+                        <h4 className="font-semibold text-gray-700 dark:text-gray-200">
+                          Reflektioner:
+                        </h4>
+                        <p className="text-gray-600 dark:text-gray-300 whitespace-pre-wrap">
+                          {log.reflections}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
+              ))
           )}
         </div>
       </motion.div>

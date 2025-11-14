@@ -207,26 +207,42 @@ export default function VeckovisLoggarPage() {
                 <div className="space-y-3">
                   {log.summary && (
                     <div>
-                      <h4 className="font-semibold text-gray-700">Sammanfattning:</h4>
-                      <p className="text-gray-600 whitespace-pre-wrap">{log.summary}</p>
+                      <h4 className="font-semibold text-gray-700 dark:text-gray-200">
+                        Sammanfattning:
+                      </h4>
+                      <p className="text-gray-600 dark:text-gray-300 whitespace-pre-wrap">
+                        {log.summary}
+                      </p>
                     </div>
                   )}
                   {log.achievements && (
                     <div>
-                      <h4 className="font-semibold text-gray-700">Prestationer:</h4>
-                      <p className="text-gray-600 whitespace-pre-wrap">{log.achievements}</p>
+                      <h4 className="font-semibold text-gray-700 dark:text-gray-200">
+                        Prestationer:
+                      </h4>
+                      <p className="text-gray-600 dark:text-gray-300 whitespace-pre-wrap">
+                        {log.achievements}
+                      </p>
                     </div>
                   )}
                   {log.challenges && (
                     <div>
-                      <h4 className="font-semibold text-gray-700">Utmaningar:</h4>
-                      <p className="text-gray-600 whitespace-pre-wrap">{log.challenges}</p>
+                      <h4 className="font-semibold text-gray-700 dark:text-gray-200">
+                        Utmaningar:
+                      </h4>
+                      <p className="text-gray-600 dark:text-gray-300 whitespace-pre-wrap">
+                        {log.challenges}
+                      </p>
                     </div>
                   )}
                   {log.nextWeek && (
                     <div>
-                      <h4 className="font-semibold text-gray-700">Nästa vecka:</h4>
-                      <p className="text-gray-600 whitespace-pre-wrap">{log.nextWeek}</p>
+                      <h4 className="font-semibold text-gray-700 dark:text-gray-200">
+                        Nästa vecka:
+                      </h4>
+                      <p className="text-gray-600 dark:text-gray-300 whitespace-pre-wrap">
+                        {log.nextWeek}
+                      </p>
                     </div>
                   )}
                 </div>
