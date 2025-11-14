@@ -108,7 +108,7 @@ export default function VeckovisLoggarPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
               Sammanfattning av veckan
             </label>
             <textarea
@@ -116,34 +116,38 @@ export default function VeckovisLoggarPage() {
               onChange={(e) => setCurrentLog({ ...currentLog, summary: e.target.value })}
               placeholder="Sammanfatta veckans händelser och aktiviteter..."
               rows={4}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">Prestationer</label>
+            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
+              Prestationer
+            </label>
             <textarea
               value={currentLog.achievements}
               onChange={(e) => setCurrentLog({ ...currentLog, achievements: e.target.value })}
               placeholder="Vad åstadkom du denna vecka?"
               rows={3}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">Utmaningar</label>
+            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
+              Utmaningar
+            </label>
             <textarea
               value={currentLog.challenges}
               onChange={(e) => setCurrentLog({ ...currentLog, challenges: e.target.value })}
               placeholder="Vilka utmaningar mötte du denna vecka?"
               rows={3}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
               Planering för nästa vecka
             </label>
             <textarea
@@ -151,7 +155,7 @@ export default function VeckovisLoggarPage() {
               onChange={(e) => setCurrentLog({ ...currentLog, nextWeek: e.target.value })}
               placeholder="Vad ska du fokusera på nästa vecka?"
               rows={3}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
             />
           </div>
 
@@ -165,10 +169,14 @@ export default function VeckovisLoggarPage() {
         </div>
 
         <div className="space-y-4">
-          <h2 className="text-2xl font-bold text-gray-800">Tidigare Veckologgar ({logs.length})</h2>
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100">
+            Tidigare Veckologgar ({logs.length})
+          </h2>
           {logs.length === 0 ? (
-            <div className="card-gradient section-card p-8 border border-gray-100 text-center">
-              <p className="text-gray-500">Inga veckologgar än. Skapa din första veckologg ovan!</p>
+            <div className="card-gradient section-card p-8 border border-gray-100 dark:border-gray-700 text-center">
+              <p className="text-gray-500 dark:text-gray-400">
+                Inga veckologgar än. Skapa din första veckologg ovan!
+              </p>
             </div>
           ) : (
             logs.map((log) => (
@@ -176,10 +184,10 @@ export default function VeckovisLoggarPage() {
                 key={log.id}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="card-gradient section-card p-6 border border-gray-100"
+                className="card-gradient section-card p-6 border border-gray-100 dark:border-gray-700"
               >
                 <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-xl font-bold text-gray-800">{log.week}</h3>
+                  <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">{log.week}</h3>
                   <div className="flex space-x-2">
                     <button
                       onClick={() => handleEdit(log)}
