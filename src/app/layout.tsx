@@ -14,11 +14,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="sv">
+    <html lang="sv" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider>
+          <Navigation />
           <ClientLayout>
-            <Navigation />
             <main className="container mx-auto px-4 py-8 md:py-12">{children}</main>
           </ClientLayout>
         </ThemeProvider>
