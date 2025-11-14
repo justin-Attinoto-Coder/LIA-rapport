@@ -18,7 +18,10 @@ import {
   FaCalendarDay,
   FaCalendarWeek,
   FaFilePdf,
+  FaMoon,
+  FaSun,
 } from 'react-icons/fa'
+import { useTheme } from '@/contexts/ThemeContext'
 
 const navItems = [
   { name: 'Hem', href: '/', icon: FaHome },
@@ -38,9 +41,10 @@ const navItems = [
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname()
+  const { theme, toggleTheme } = useTheme()
 
   return (
-    <nav className="bg-white/80 backdrop-blur-md shadow-lg sticky top-0 z-50">
+    <nav className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md shadow-lg sticky top-0 z-50 transition-colors duration-300">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -60,7 +64,7 @@ export default function Navigation() {
                 className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center space-x-2 ${
                   pathname === item.href
                     ? 'bg-gradient-primary text-white shadow-md'
-                    : 'text-gray-700 hover:bg-purple-50'
+                    : 'text-gray-700 dark:text-gray-200 hover:bg-purple-50 dark:hover:bg-gray-700'
                 }`}
               >
                 <item.icon />
@@ -68,16 +72,18 @@ export default function Navigation() {
               </Link>
             ))}
             <div className="relative group">
-              <button className="px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-purple-50 transition-all duration-200">
+              <button className="px-3 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-purple-50 dark:hover:bg-gray-700 transition-all duration-200">
                 Mer ▾
               </button>
-              <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              <div className="absolute right-0 mt-2 w-56 bg-white dark:bg-gray-800 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                 {navItems.slice(6).map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`flex px-4 py-3 text-sm font-medium hover:bg-purple-50 first:rounded-t-lg last:rounded-b-lg transition-colors items-center space-x-2 ${
-                      pathname === item.href ? 'bg-purple-100 text-purple-700' : 'text-gray-700'
+                    className={`flex px-4 py-3 text-sm font-medium hover:bg-purple-50 dark:hover:bg-gray-700 first:rounded-t-lg last:rounded-b-lg transition-colors items-center space-x-2 ${
+                      pathname === item.href
+                        ? 'bg-purple-100 dark:bg-gray-700 text-purple-700 dark:text-purple-300'
+                        : 'text-gray-700 dark:text-gray-200'
                     }`}
                   >
                     <item.icon />
@@ -86,15 +92,33 @@ export default function Navigation() {
                 ))}
               </div>
             </div>
+
+            {/* Dark Mode Toggle */}
+            <button
+              onClick={toggleTheme}
+              className="ml-2 p-2 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-purple-50 dark:hover:bg-gray-700 transition-colors"
+              aria-label="Toggle dark mode"
+            >
+              {theme === 'dark' ? <FaSun className="text-xl" /> : <FaMoon className="text-xl" />}
+            </button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-lg text-gray-700 hover:bg-purple-50 transition-colors"
-          >
-            {isOpen ? <FaTimes className="text-2xl" /> : <FaBars className="text-2xl" />}
-          </button>
+          {/* Mobile Menu Button & Dark Mode Toggle */}
+          <div className="flex items-center space-x-2">
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-purple-50 dark:hover:bg-gray-700 transition-colors"
+              aria-label="Toggle dark mode"
+            >
+              {theme === 'dark' ? <FaSun className="text-xl" /> : <FaMoon className="text-xl" />}
+            </button>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="lg:hidden p-2 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-purple-50 dark:hover:bg-gray-700 transition-colors"
+            >
+              {isOpen ? <FaTimes className="text-2xl" /> : <FaBars className="text-2xl" />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -106,7 +130,7 @@ export default function Navigation() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden bg-white border-t border-gray-200 overflow-hidden"
+            className="lg:hidden bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 overflow-hidden transition-colors duration-300"
           >
             <div className="container mx-auto px-4 py-4 space-y-1 max-h-[calc(100vh-5rem)] overflow-y-auto">
               {navItems.map((item) => (
@@ -117,7 +141,7 @@ export default function Navigation() {
                   className={`flex px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 items-center space-x-3 ${
                     pathname === item.href
                       ? 'bg-gradient-primary text-white shadow-md'
-                      : 'text-gray-700 hover:bg-purple-50'
+                      : 'text-gray-700 dark:text-gray-200 hover:bg-purple-50 dark:hover:bg-gray-700'
                   }`}
                 >
                   <item.icon className="text-lg" />

@@ -14,13 +14,11 @@ export default function Home() {
         transition={{ duration: 0.5 }}
         className="text-center space-y-6"
       >
-        <h1 className="text-5xl md:text-7xl font-bold gradient-text">
-          LIA Rapport
-        </h1>
-        <p className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto">
+        <h1 className="text-5xl md:text-7xl font-bold gradient-text">LIA Rapport</h1>
+        <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
           Frontend Developer Internship Tracker
         </p>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
           Professional system for documenting and showcasing your 6-month LIA journey
         </p>
       </motion.div>
@@ -31,15 +29,15 @@ export default function Home() {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="card-gradient section-card p-6 border border-purple-100"
+          className="card-gradient section-card p-6 border border-purple-100 dark:border-purple-900"
         >
           <div className="flex items-center space-x-4">
             <div className="p-3 bg-gradient-primary rounded-lg">
               <FaCalendarAlt className="text-3xl text-white" />
             </div>
             <div>
-              <h3 className="text-2xl font-bold text-gray-800">6 Months</h3>
-              <p className="text-gray-600">Internship Duration</p>
+              <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100">6 Months</h3>
+              <p className="text-gray-600 dark:text-gray-400">Internship Duration</p>
             </div>
           </div>
         </motion.div>
@@ -48,15 +46,17 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="card-gradient section-card p-6 border border-blue-100"
+          className="card-gradient section-card p-6 border border-blue-100 dark:border-blue-900"
         >
           <div className="flex items-center space-x-4">
             <div className="p-3 bg-gradient-success rounded-lg">
               <FaChartLine className="text-3xl text-white" />
             </div>
             <div>
-              <h3 className="text-2xl font-bold text-gray-800">Track Progress</h3>
-              <p className="text-gray-600">Daily & Weekly Logs</p>
+              <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100">
+                Track Progress
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400">Daily & Weekly Logs</p>
             </div>
           </div>
         </motion.div>
@@ -65,15 +65,15 @@ export default function Home() {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="card-gradient section-card p-6 border border-pink-100"
+          className="card-gradient section-card p-6 border border-pink-100 dark:border-pink-900"
         >
           <div className="flex items-center space-x-4">
             <div className="p-3 bg-gradient-secondary rounded-lg">
               <FaGraduationCap className="text-3xl text-white" />
             </div>
             <div>
-              <h3 className="text-2xl font-bold text-gray-800">Professional</h3>
-              <p className="text-gray-600">Export to PDF</p>
+              <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100">Professional</h3>
+              <p className="text-gray-600 dark:text-gray-400">Export to PDF</p>
             </div>
           </div>
         </motion.div>
@@ -89,12 +89,18 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.1 * index }}
           >
             <Link href={section.href}>
-              <div className={`card-gradient section-card p-6 h-full border ${section.borderColor} cursor-pointer`}>
-                <div className={`inline-block p-3 rounded-lg bg-gradient-to-br ${section.gradient} mb-4`}>
+              <div
+                className={`card-gradient section-card p-6 h-full border ${section.borderColor} dark:border-opacity-30 cursor-pointer`}
+              >
+                <div
+                  className={`inline-block p-3 rounded-lg bg-gradient-to-br ${section.gradient} mb-4`}
+                >
                   <section.icon className="text-3xl text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2">{section.title}</h3>
-                <p className="text-gray-600">{section.description}</p>
+                <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-2">
+                  {section.title}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400">{section.description}</p>
               </div>
             </Link>
           </motion.div>
@@ -126,7 +132,7 @@ const sections = [
     href: '/sammanfattning',
     icon: FaGraduationCap,
     gradient: 'from-purple-500 to-indigo-500',
-    borderColor: 'border-purple-100'
+    borderColor: 'border-purple-100',
   },
   {
     title: 'Inledning',
@@ -134,7 +140,7 @@ const sections = [
     href: '/inledning',
     icon: FaChartLine,
     gradient: 'from-blue-500 to-cyan-500',
-    borderColor: 'border-blue-100'
+    borderColor: 'border-blue-100',
   },
   {
     title: 'LIA-företaget',
@@ -142,7 +148,7 @@ const sections = [
     href: '/lia-foretag',
     icon: FaCalendarAlt,
     gradient: 'from-green-500 to-teal-500',
-    borderColor: 'border-green-100'
+    borderColor: 'border-green-100',
   },
   {
     title: 'Arbetsuppgifter',
@@ -150,7 +156,7 @@ const sections = [
     href: '/arbetsuppgifter',
     icon: FaChartLine,
     gradient: 'from-yellow-500 to-orange-500',
-    borderColor: 'border-yellow-100'
+    borderColor: 'border-yellow-100',
   },
   {
     title: 'Projekt',
@@ -158,7 +164,7 @@ const sections = [
     href: '/projekt',
     icon: FaGraduationCap,
     gradient: 'from-pink-500 to-rose-500',
-    borderColor: 'border-pink-100'
+    borderColor: 'border-pink-100',
   },
   {
     title: 'Måluppfyllelse',
@@ -166,7 +172,7 @@ const sections = [
     href: '/maluppfyllelse',
     icon: FaChartLine,
     gradient: 'from-violet-500 to-purple-500',
-    borderColor: 'border-violet-100'
+    borderColor: 'border-violet-100',
   },
   {
     title: 'Diskussion & Slutsats',
@@ -174,7 +180,7 @@ const sections = [
     href: '/diskussion-slutsats',
     icon: FaCalendarAlt,
     gradient: 'from-red-500 to-pink-500',
-    borderColor: 'border-red-100'
+    borderColor: 'border-red-100',
   },
   {
     title: 'Egen utveckling',
@@ -182,7 +188,7 @@ const sections = [
     href: '/egen-utveckling',
     icon: FaGraduationCap,
     gradient: 'from-indigo-500 to-blue-500',
-    borderColor: 'border-indigo-100'
+    borderColor: 'border-indigo-100',
   },
   {
     title: 'Dagliga Loggar',
@@ -190,6 +196,6 @@ const sections = [
     href: '/loggar/daglig',
     icon: FaCalendarAlt,
     gradient: 'from-teal-500 to-green-500',
-    borderColor: 'border-teal-100'
+    borderColor: 'border-teal-100',
   },
 ]

@@ -73,8 +73,8 @@ func main() {
 		handlers.AllowedHeaders([]string{"Content-Type", "Authorization"}),
 	)
 
-	log.Println("🚀 LIA Rapport Backend Server starting on :8080")
-	log.Fatal(http.ListenAndServe(":8080", corsHandler(router)))
+	log.Println("🚀 LIA Rapport Backend Server starting on :8081")
+	log.Fatal(http.ListenAndServe(":8081", corsHandler(router)))
 }
 
 // Section Handlers

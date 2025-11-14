@@ -18,11 +18,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
     rgb(var(--background-start-rgb));
 }
 
@@ -36,8 +32,16 @@ body {
   @apply bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 bg-clip-text text-transparent;
 }
 
+.dark .gradient-text {
+  @apply from-purple-400 via-pink-400 to-blue-400;
+}
+
 .card-gradient {
   @apply bg-gradient-to-br from-white/90 to-white/70 backdrop-blur-sm;
+}
+
+.dark .card-gradient {
+  @apply from-gray-800/90 to-gray-800/70;
 }
 
 .section-card {

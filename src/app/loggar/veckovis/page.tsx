@@ -21,7 +21,7 @@ export default function VeckovisLoggarPage() {
     summary: '',
     achievements: '',
     challenges: '',
-    nextWeek: ''
+    nextWeek: '',
   })
 
   useEffect(() => {
@@ -34,11 +34,11 @@ export default function VeckovisLoggarPage() {
   const handleSave = () => {
     const newLog = {
       ...currentLog,
-      id: currentLog.id || Date.now().toString()
+      id: currentLog.id || Date.now().toString(),
     }
 
     const updatedLogs = currentLog.id
-      ? logs.map(log => log.id === currentLog.id ? newLog : log)
+      ? logs.map((log) => (log.id === currentLog.id ? newLog : log))
       : [...logs, newLog]
 
     setLogs(updatedLogs)
@@ -50,7 +50,7 @@ export default function VeckovisLoggarPage() {
       summary: '',
       achievements: '',
       challenges: '',
-      nextWeek: ''
+      nextWeek: '',
     })
 
     alert('Veckologg sparad!')
@@ -58,7 +58,7 @@ export default function VeckovisLoggarPage() {
 
   const handleDelete = (id: string) => {
     if (confirm('Är du säker på att du vill ta bort denna veckologg?')) {
-      const updatedLogs = logs.filter(log => log.id !== id)
+      const updatedLogs = logs.filter((log) => log.id !== id)
       setLogs(updatedLogs)
       localStorage.setItem('weeklyLogs', JSON.stringify(updatedLogs))
     }
@@ -82,7 +82,9 @@ export default function VeckovisLoggarPage() {
           </div>
           <div>
             <h1 className="text-4xl font-bold gradient-text">Veckologgar</h1>
-            <p className="text-gray-600 mt-2">Veckovisa sammanfattningar av din LIA</p>
+            <p className="text-gray-600 dark:text-gray-400 mt-2">
+              Veckovisa sammanfattningar av din LIA
+            </p>
           </div>
         </div>
 
@@ -93,9 +95,7 @@ export default function VeckovisLoggarPage() {
           </h2>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
-              Vecka
-            </label>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">Vecka</label>
             <input
               type="text"
               value={currentLog.week}
@@ -119,9 +119,7 @@ export default function VeckovisLoggarPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
-              Prestationer
-            </label>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">Prestationer</label>
             <textarea
               value={currentLog.achievements}
               onChange={(e) => setCurrentLog({ ...currentLog, achievements: e.target.value })}
@@ -132,9 +130,7 @@ export default function VeckovisLoggarPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
-              Utmaningar
-            </label>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">Utmaningar</label>
             <textarea
               value={currentLog.challenges}
               onChange={(e) => setCurrentLog({ ...currentLog, challenges: e.target.value })}
