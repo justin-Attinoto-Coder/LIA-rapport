@@ -33,7 +33,7 @@ export default function SectionTemplate({
   icon,
   storageKey,
   fields,
-  gradient
+  gradient,
 }: SectionTemplateProps) {
   const [data, setData] = useState<Record<string, string>>({})
   const IconComponent = iconMap[icon] || FaBook
@@ -44,7 +44,7 @@ export default function SectionTemplate({
       setData(JSON.parse(saved))
     } else {
       const initial: Record<string, string> = {}
-      fields.forEach(field => {
+      fields.forEach((field) => {
         initial[field.name] = ''
       })
       setData(initial)
@@ -57,7 +57,7 @@ export default function SectionTemplate({
   }
 
   const handleChange = (field: string, value: string) => {
-    setData(prev => ({ ...prev, [field]: value }))
+    setData((prev) => ({ ...prev, [field]: value }))
   }
 
   return (
@@ -73,14 +73,14 @@ export default function SectionTemplate({
           </div>
           <div>
             <h1 className="text-4xl font-bold gradient-text">{title}</h1>
-            <p className="text-gray-600 mt-2">{description}</p>
+            <p className="text-gray-600 dark:text-gray-400 mt-2">{description}</p>
           </div>
         </div>
 
-        <div className="card-gradient section-card p-8 border border-purple-100 space-y-6">
+        <div className="card-gradient section-card p-8 border border-purple-100 dark:border-purple-900 space-y-6">
           {fields.map((field) => (
             <div key={field.name}>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
                 {field.label}
               </label>
               {field.type === 'textarea' ? (
@@ -89,7 +89,7 @@ export default function SectionTemplate({
                   onChange={(e) => handleChange(field.name, e.target.value)}
                   placeholder={field.placeholder}
                   rows={field.rows || 4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
                 />
               ) : (
                 <input
@@ -97,7 +97,7 @@ export default function SectionTemplate({
                   value={data[field.name] || ''}
                   onChange={(e) => handleChange(field.name, e.target.value)}
                   placeholder={field.placeholder}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
                 />
               )}
             </div>
