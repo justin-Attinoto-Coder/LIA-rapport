@@ -13,7 +13,7 @@ export default function SammanfattningPage() {
     challenges: '',
     solutions: '',
     achievements: '',
-    learnings: ''
+    learnings: '',
   })
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function SammanfattningPage() {
   }
 
   const handleChange = (field: string, value: string) => {
-    setData(prev => ({ ...prev, [field]: value }))
+    setData((prev) => ({ ...prev, [field]: value }))
   }
 
   return (
@@ -50,9 +50,9 @@ export default function SammanfattningPage() {
           </div>
         </div>
 
-        <div className="card-gradient section-card p-8 border border-purple-100 space-y-6">
+        <div className="card-gradient section-card p-8 border border-purple-100 dark:border-purple-900 space-y-6">
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
               LIA Period
             </label>
             <input
@@ -60,12 +60,12 @@ export default function SammanfattningPage() {
               value={data.period}
               onChange={(e) => handleChange('period', e.target.value)}
               placeholder="t.ex. 2024-01-15 till 2024-07-15"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
               Företag
             </label>
             <input
@@ -73,12 +73,12 @@ export default function SammanfattningPage() {
               value={data.company}
               onChange={(e) => handleChange('company', e.target.value)}
               placeholder="Företagsnamn"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
               Nyckelkunskaper som stärktes
             </label>
             <textarea
@@ -86,12 +86,12 @@ export default function SammanfattningPage() {
               onChange={(e) => handleChange('skills', e.target.value)}
               placeholder="Beskriv de viktigaste färdigheterna du utvecklade..."
               rows={4}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
               Huvudsakliga uppgifter och projekt
             </label>
             <textarea
@@ -99,12 +99,12 @@ export default function SammanfattningPage() {
               onChange={(e) => handleChange('tasks', e.target.value)}
               placeholder="Sammanfatta dina huvuduppgifter..."
               rows={4}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
               Utmaningar
             </label>
             <textarea
@@ -112,12 +112,12 @@ export default function SammanfattningPage() {
               onChange={(e) => handleChange('challenges', e.target.value)}
               placeholder="Vilka utmaningar mötte du?"
               rows={3}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
               Lösningar och metoder
             </label>
             <textarea
@@ -125,12 +125,12 @@ export default function SammanfattningPage() {
               onChange={(e) => handleChange('solutions', e.target.value)}
               placeholder="Hur löste du utmaningarna?"
               rows={3}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
               Uppfyllda kursmål
             </label>
             <textarea
@@ -138,12 +138,12 @@ export default function SammanfattningPage() {
               onChange={(e) => handleChange('achievements', e.target.value)}
               placeholder="Vilka kursmål uppfyllde du?"
               rows={3}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200 mb-2">
               Lärdomar (2-3 punkter)
             </label>
             <textarea
@@ -151,7 +151,7 @@ export default function SammanfattningPage() {
               onChange={(e) => handleChange('learnings', e.target.value)}
               placeholder="• Lärdom 1&#10;• Lärdom 2&#10;• Lärdom 3"
               rows={4}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder:text-gray-500 dark:placeholder:text-gray-400"
             />
           </div>
 
