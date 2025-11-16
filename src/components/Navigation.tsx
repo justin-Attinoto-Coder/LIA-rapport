@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -40,8 +40,13 @@ const navItems = [
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const pathname = usePathname()
   const { theme, toggleTheme } = useTheme()
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   return (
     <nav className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md shadow-lg sticky top-0 z-50 transition-colors duration-300">
@@ -99,7 +104,7 @@ export default function Navigation() {
               className="ml-2 px-3 py-2 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-purple-50 dark:hover:bg-gray-700 transition-colors flex items-center space-x-2"
               aria-label="Toggle dark mode"
             >
-              {theme === 'dark' ? (
+              {mounted && theme === 'dark' ? (
                 <>
                   <FaSun className="text-lg" />
                   <span className="text-sm font-medium hidden md:inline">Light</span>
@@ -120,7 +125,7 @@ export default function Navigation() {
               className="px-3 py-2 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-purple-50 dark:hover:bg-gray-700 transition-colors flex items-center space-x-2"
               aria-label="Toggle dark mode"
             >
-              {theme === 'dark' ? (
+              {mounted && theme === 'dark' ? (
                 <>
                   <FaSun className="text-lg" />
                   <span className="text-sm font-medium">Light</span>
