@@ -371,9 +371,11 @@ export default function ExportPage() {
           </div>
         </div>
 
-        <div className="card-gradient section-card p-8 border border-pink-100 space-y-6">
+        <div className="card-gradient section-card p-8 border border-pink-100 dark:border-pink-900 space-y-6">
           <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-gray-800">Din rapport inkluderar:</h2>
+            <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100">
+              Din professionella rapport inkluderar:
+            </h2>
             <ul className="space-y-3">
               {[
                 'Sammanfattning',
@@ -391,7 +393,7 @@ export default function ExportPage() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
-                  className="flex items-center space-x-3 text-gray-700"
+                  className="flex items-center space-x-3 text-gray-700 dark:text-gray-300"
                 >
                   <FaCheckCircle className="text-green-500 text-xl" />
                   <span>{item}</span>
@@ -400,14 +402,19 @@ export default function ExportPage() {
             </ul>
           </div>
 
-          <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
-            <p className="text-sm text-blue-800">
-              <strong>Tips:</strong> Se till att du har fyllt i alla sektioner innan du exporterar.
-              Kontrollera särskilt att dina dagliga loggar och reflektioner är uppdaterade.
+          <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border-l-4 border-purple-500 p-4 rounded">
+            <p className="text-sm text-purple-900 dark:text-purple-200">
+              <strong>✨ Nytt!</strong> Din rapport har nu professionell design med färggradients, 
+              modern typografi och snygg layout. Perfekt för att visa upp dina framsteg!
             </p>
           </div>
 
-          <button
+          <div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-4 rounded">
+            <p className="text-sm text-blue-800 dark:text-blue-200">
+              <strong>Tips:</strong> Se till att du har fyllt i alla sektioner innan du exporterar. 
+              Kontrollera särskilt att dina veckologgar och reflektioner är uppdaterade.
+            </p>
+          </div>          <button
             onClick={generatePDF}
             className="w-full py-4 bg-gradient-secondary text-white rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center space-x-3"
           >
