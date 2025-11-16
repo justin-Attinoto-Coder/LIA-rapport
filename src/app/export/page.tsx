@@ -111,30 +111,30 @@ export default function ExportPage() {
     // ═══════════════════════════════════════════════════
     // TITLE PAGE - Modern & Professional
     // ═══════════════════════════════════════════════════
-    
+
     // Gradient header banner
     addGradientRect(0, 0, 210, 80)
-    
+
     // Main title
     doc.setFontSize(32)
     doc.setFont('helvetica', 'bold')
     doc.setTextColor(255, 255, 255)
     doc.text('LIA RAPPORT', 105, 35, { align: 'center' })
-    
+
     // Subtitle
     doc.setFontSize(18)
     doc.setFont('helvetica', 'normal')
     doc.text('Frontend Developer', 105, 50, { align: 'center' })
-    
+
     // Decorative line
     doc.setDrawColor(255, 255, 255)
     doc.setLineWidth(1)
     doc.line(40, 60, 170, 60)
-    
+
     // Period and company info
     yPosition = 100
     doc.setTextColor(colors.text[0], colors.text[1], colors.text[2])
-    
+
     if (sammanfattning.period) {
       doc.setFontSize(14)
       doc.setFont('helvetica', 'bold')
@@ -144,7 +144,7 @@ export default function ExportPage() {
       doc.text(sammanfattning.period, 105, yPosition, { align: 'center' })
       yPosition += 15
     }
-    
+
     if (sammanfattning.company || liaForetag.name) {
       doc.setFontSize(14)
       doc.setFont('helvetica', 'bold')
@@ -154,59 +154,59 @@ export default function ExportPage() {
       doc.text(sammanfattning.company || liaForetag.name || '', 105, yPosition, { align: 'center' })
       yPosition += 15
     }
-    
+
     // Student info box
     doc.setDrawColor(colors.primary[0], colors.primary[1], colors.primary[2])
     doc.setLineWidth(1.5)
     doc.roundedRect(30, yPosition, 150, 30, 5, 5, 'S')
-    
+
     doc.setFontSize(11)
     doc.setTextColor(colors.dark[0], colors.dark[1], colors.dark[2])
     doc.text('Utbildning: Frontend Developer (YH)', 105, yPosition + 12, { align: 'center' })
     doc.text('LIA-period: 6 månader', 105, yPosition + 20, { align: 'center' })
-    
+
     // Footer with page number
     doc.setFontSize(9)
     doc.setTextColor(150, 150, 150)
     doc.text('Sida 1', 105, 285, { align: 'center' })
-    
+
     // ═══════════════════════════════════════════════════
     // SAMMANFATTNING
     // ═══════════════════════════════════════════════════
-    
+
     doc.addPage()
     yPosition = 25
-    
+
     addSectionHeader('SAMMANFATTNING')
-    
+
     addSubsection('Nyckelkunskaper', sammanfattning.skills)
     addSubsection('Huvudsakliga uppgifter', sammanfattning.tasks)
     addSubsection('Viktigaste lärdomar', sammanfattning.learnings)
-    
+
     // ═══════════════════════════════════════════════════
     // INLEDNING
     // ═══════════════════════════════════════════════════
-    
+
     if (inledning.expectations || inledning.goals) {
       doc.addPage()
       yPosition = 25
-      
+
       addSectionHeader('INLEDNING')
-      
+
       addSubsection('Förväntningar', inledning.expectations)
       addSubsection('Mål', inledning.goals)
     }
-    
+
     // ═══════════════════════════════════════════════════
     // LIA-FÖRETAGET
     // ═══════════════════════════════════════════════════
-    
+
     if (Object.keys(liaForetag).length > 0) {
       doc.addPage()
       yPosition = 25
-      
+
       addSectionHeader('LIA-FÖRETAGET')
-      
+
       if (liaForetag.name) {
         doc.setFontSize(14)
         doc.setFont('helvetica', 'bold')
@@ -214,37 +214,37 @@ export default function ExportPage() {
         doc.text(liaForetag.name, 20, yPosition)
         yPosition += 10
       }
-      
+
       addSubsection('Beskrivning', liaForetag.description)
       addSubsection('Storlek & verksamhet', liaForetag.size)
       addSubsection('Min avdelning', liaForetag.department)
       addSubsection('Företagskultur', liaForetag.culture)
       addSubsection('Introduktionsprocess', liaForetag.introduction)
     }
-    
+
     // ═══════════════════════════════════════════════════
     // ARBETSUPPGIFTER
     // ═══════════════════════════════════════════════════
-    
+
     if (arbetsuppgifter.tasks) {
       doc.addPage()
       yPosition = 25
-      
+
       addSectionHeader('ARBETSUPPGIFTER')
-      
+
       addText(arbetsuppgifter.tasks, 10)
     }
-    
+
     // ═══════════════════════════════════════════════════
     // PROJEKT
     // ═══════════════════════════════════════════════════
-    
+
     if (projekt.name || projekt.description) {
       doc.addPage()
       yPosition = 25
-      
+
       addSectionHeader('PROJEKT')
-      
+
       if (projekt.name) {
         doc.setFontSize(13)
         doc.setFont('helvetica', 'bold')
@@ -252,92 +252,92 @@ export default function ExportPage() {
         doc.text(projekt.name, 20, yPosition)
         yPosition += 10
       }
-      
+
       addSubsection('Projektbeskrivning', projekt.description)
       addSubsection('Teknologier', projekt.technologies)
       addSubsection('Min roll', projekt.role)
       addSubsection('Resultat', projekt.results)
     }
-    
+
     // ═══════════════════════════════════════════════════
     // VECKOLOGGAR (Summary)
     // ═══════════════════════════════════════════════════
-    
+
     if (weeklyLogs.length > 0) {
       doc.addPage()
       yPosition = 25
-      
+
       addSectionHeader('VECKOLOGGAR')
-      
+
       doc.setFontSize(11)
       doc.setFont('helvetica', 'normal')
       doc.setTextColor(colors.text[0], colors.text[1], colors.text[2])
       doc.text(`Totalt antal veckologgar: ${weeklyLogs.length}`, 20, yPosition)
       yPosition += 10
-      
+
       weeklyLogs.slice(0, 8).forEach((log: any) => {
         if (yPosition > 250) {
           doc.addPage()
           yPosition = 25
         }
-        
+
         // Week header
         doc.setFillColor(colors.light[0], colors.light[1], colors.light[2])
         doc.roundedRect(18, yPosition - 6, 174, 8, 1, 1, 'F')
-        
+
         doc.setFontSize(11)
         doc.setFont('helvetica', 'bold')
         doc.setTextColor(colors.primary[0], colors.primary[1], colors.primary[2])
         doc.text(log.week, 20, yPosition)
         yPosition += 10
-        
+
         if (log.summary) {
           addText(log.summary.substring(0, 200) + (log.summary.length > 200 ? '...' : ''), 9)
         }
-        
+
         yPosition += 5
       })
     }
-    
+
     // ═══════════════════════════════════════════════════
     // MÅLUPPFYLLELSE
     // ═══════════════════════════════════════════════════
-    
+
     if (maluppfyllelse.goals) {
       doc.addPage()
       yPosition = 25
-      
+
       addSectionHeader('MÅLUPPFYLLELSE')
-      
+
       addText(maluppfyllelse.goals, 10)
     }
-    
+
     // ═══════════════════════════════════════════════════
     // DISKUSSION & SLUTSATS
     // ═══════════════════════════════════════════════════
-    
+
     if (diskussion.discussion) {
       doc.addPage()
       yPosition = 25
-      
+
       addSectionHeader('DISKUSSION & SLUTSATS')
-      
+
       addText(diskussion.discussion, 10)
     }
-    
+
     // ═══════════════════════════════════════════════════
     // EGEN UTVECKLING
     // ═══════════════════════════════════════════════════
-    
+
     if (utveckling.development) {
       doc.addPage()
       yPosition = 25
-      
+
       addSectionHeader('EGEN UTVECKLING')
-      
+
       addText(utveckling.development, 10)
     }
-    
+
     // Add page numbers to all pages (except first)
     const pageCount = doc.getNumberOfPages()
     for (let i = 2; i <= pageCount; i++) {
@@ -350,7 +350,9 @@ export default function ExportPage() {
     // Save PDF
     doc.save('LIA-Rapport-Professional.pdf')
     alert('✨ Professionell PDF-rapport genererad!')
-  }  return (
+  }
+
+  return (
     <div className="max-w-4xl mx-auto space-y-8">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
