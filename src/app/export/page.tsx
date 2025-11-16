@@ -401,27 +401,25 @@ export default function ExportPage() {
               ))}
             </ul>
           </div>
-
           <div className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 border-l-4 border-purple-500 p-4 rounded">
             <p className="text-sm text-purple-900 dark:text-purple-200">
-              <strong>✨ Nytt!</strong> Din rapport har nu professionell design med färggradients, 
+              <strong>✨ Nytt!</strong> Din rapport har nu professionell design med färggradients,
               modern typografi och snygg layout. Perfekt för att visa upp dina framsteg!
             </p>
           </div>
-
           <div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-4 rounded">
             <p className="text-sm text-blue-800 dark:text-blue-200">
-              <strong>Tips:</strong> Se till att du har fyllt i alla sektioner innan du exporterar. 
+              <strong>Tips:</strong> Se till att du har fyllt i alla sektioner innan du exporterar.
               Kontrollera särskilt att dina veckologgar och reflektioner är uppdaterade.
             </p>
-          </div>          <button
+          </div>{' '}
+          <button
             onClick={generatePDF}
             className="w-full py-4 bg-gradient-secondary text-white rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center space-x-3"
           >
             <FaDownload className="text-2xl" />
             <span>Generera PDF-Rapport</span>
           </button>
-
           <div className="text-center text-sm text-gray-500">
             <p>Rapporten kommer att laddas ner som LIA-Rapport.pdf</p>
           </div>
