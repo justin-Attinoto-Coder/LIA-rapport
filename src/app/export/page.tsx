@@ -9,34 +9,102 @@ export default function ExportPage() {
     const doc = new jsPDF()
     let yPosition = 20
 
-    // Helper function to add text with wrapping
-    const addText = (text: string, fontSize = 12, isBold = false) => {
+    // Professional color palette (RGB)
+    const colors = {
+      primary: [147, 51, 234] as [number, number, number],
+      secondary: [236, 72, 153] as [number, number, number],
+      accent: [59, 130, 246] as [number, number, number],
+      success: [34, 197, 94] as [number, number, number],
+      dark: [31, 41, 55] as [number, number, number],
+      light: [249, 250, 251] as [number, number, number],
+      text: [55, 65, 81] as [number, number, number],
+    }
+
+    // Helper: Add gradient rectangle (simplified)
+    const addGradientRect = (x: number, y: number, w: number, h: number) => {
+      doc.setFillColor(colors.primary[0], colors.primary[1], colors.primary[2])
+      doc.rect(x, y, w, h, 'F')
+    }
+
+    // Helper: Add decorative line
+    const addDecorativeLine = (y: number) => {
+      doc.setDrawColor(colors.primary[0], colors.primary[1], colors.primary[2])
+      doc.setLineWidth(0.5)
+      doc.line(20, y, 190, y)
+    }
+
+    // Helper: Add text with wrapping and auto-pagination
+    const addText = (text: string, fontSize = 11, isBold = false, color = colors.text) => {
       doc.setFontSize(fontSize)
-      if (isBold) {
-        doc.setFont('helvetica', 'bold')
-      } else {
-        doc.setFont('helvetica', 'normal')
-      }
-      
+      doc.setFont('helvetica', isBold ? 'bold' : 'normal')
+      doc.setTextColor(color[0], color[1], color[2])
+
       const lines = doc.splitTextToSize(text, 170)
-      doc.text(lines, 20, yPosition)
-      yPosition += (lines.length * fontSize * 0.5) + 5
-      
-      if (yPosition > 270) {
+
+      lines.forEach((line: string) => {
+        if (yPosition > 270) {
+          doc.addPage()
+          yPosition = 25
+        }
+        doc.text(line, 20, yPosition)
+        yPosition += fontSize * 0.5 + 2
+      })
+
+      yPosition += 3
+    }
+
+    // Helper: Add section header with styling
+    const addSectionHeader = (title: string) => {
+      if (yPosition > 250) {
         doc.addPage()
-        yPosition = 20
+        yPosition = 25
       }
+
+      // Gradient background for header
+      doc.setFillColor(colors.primary[0], colors.primary[1], colors.primary[2])
+      doc.roundedRect(15, yPosition - 8, 180, 12, 2, 2, 'F')
+
+      doc.setFontSize(16)
+      doc.setFont('helvetica', 'bold')
+      doc.setTextColor(255, 255, 255)
+      doc.text(title, 20, yPosition)
+
+      yPosition += 15
+      doc.setTextColor(colors.text[0], colors.text[1], colors.text[2])
+    }
+
+    // Helper: Add subsection
+    const addSubsection = (title: string, content: string) => {
+      if (!content || content.trim() === '') return
+
+      if (yPosition > 260) {
+        doc.addPage()
+        yPosition = 25
+      }
+
+      // Subsection title with colored bullet
+      doc.setFillColor(colors.accent[0], colors.accent[1], colors.accent[2])
+      doc.circle(18, yPosition - 1.5, 1.5, 'F')
+
+      doc.setFontSize(12)
+      doc.setFont('helvetica', 'bold')
+      doc.setTextColor(colors.dark[0], colors.dark[1], colors.dark[2])
+      doc.text(title, 23, yPosition)
+      yPosition += 8
+
+      addText(content, 10)
+      yPosition += 2
     }
 
     // Title Page
     doc.setFontSize(24)
     doc.setFont('helvetica', 'bold')
     doc.text('LIA RAPPORT', 105, 40, { align: 'center' })
-    
+
     doc.setFontSize(16)
     doc.setFont('helvetica', 'normal')
     doc.text('Frontend Developer', 105, 55, { align: 'center' })
-    
+
     yPosition = 100
 
     // Get data from localStorage
@@ -186,7 +254,7 @@ export default function ExportPage() {
                 'Måluppfyllelse',
                 'Diskussion och slutsats',
                 'Egen utveckling',
-                'Dagliga loggar (sammanfattning)'
+                'Dagliga loggar (sammanfattning)',
               ].map((item, index) => (
                 <motion.li
                   key={item}
@@ -204,7 +272,7 @@ export default function ExportPage() {
 
           <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
             <p className="text-sm text-blue-800">
-              <strong>Tips:</strong> Se till att du har fyllt i alla sektioner innan du exporterar. 
+              <strong>Tips:</strong> Se till att du har fyllt i alla sektioner innan du exporterar.
               Kontrollera särskilt att dina dagliga loggar och reflektioner är uppdaterade.
             </p>
           </div>
