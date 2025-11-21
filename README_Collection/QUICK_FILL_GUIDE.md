@@ -11,6 +11,7 @@
 **Vecka:** `Vecka 1 (18-22 November 2025)`
 
 **Sammanfattning av veckan:**
+
 ```
 Min första vecka på Traxmate! Började måndagen kl 8:30 med Rikard (COO) som gav rundtur och introduktion. Fokuserade på Verkada Helix API-integration för larmsystem. Byggde komplett full-stack lösning från grunden:
 
@@ -24,6 +25,7 @@ Implementerade Python backend för Verkada API och modern Angular 19 frontend me
 ```
 
 **Prestationer:**
+
 ```
 • Komplett Verkada Helix API-integration (Python) - 100% success rate över 150+ API calls
 • Modern Angular 19 frontend med standalone components och SSR
@@ -36,6 +38,7 @@ Implementerade Python backend för Verkada API och modern Angular 19 frontend me
 ```
 
 **Utmaningar:**
+
 ```
 • Stor kodbas och mycket ny information första veckan - löst genom systematisk dokumentation
 • Event type creation returnerade 500 errors - löst genom att använda existing event types istället
@@ -45,6 +48,7 @@ Implementerade Python backend för Verkada API och modern Angular 19 frontend me
 ```
 
 **Planering för nästa vecka:**
+
 ```
 • Börja backend API development (Node.js eller Go)
 • Implementera Traxmate alarm event listener
@@ -99,6 +103,7 @@ Jag känner redan efter Week 1 att jag kan leverera professional-grade kod och a
 **Navigate to:** `http://localhost:3000/utveckling`
 
 **Tekniska Färdigheter:**
+
 ```
 Angular 19 (Standalone Components)
 Började veckan med Angular 14 erfarenhet från skolan. Lärde mig Angular 19's nya patterns:
@@ -130,6 +135,7 @@ Förbättrade Python skills:
 ```
 
 **Mjuka Färdigheter:**
+
 ```
 Kommunikation
 • Daily progress updates till Rikard (över-communication is better!)
@@ -152,6 +158,7 @@ Anpassningsförmåga
 ```
 
 **Framtida Mål:**
+
 ```
 Nästa Vecka (25-29 Nov):
 • Lära mig Go language (Traxmate använder Go för backend)
@@ -200,6 +207,7 @@ Det bästa: Projektet har direkt business value. När jag frågade "Kommer detta
 **Add for each Lärandemål:**
 
 **LM1 - Frontend Ramverk:**
+
 ```
 UPPFYLLT: ⭐⭐⭐⭐⭐ Excellent
 
@@ -219,6 +227,7 @@ BEVIS:
 ```
 
 **LM2 - API Integration:**
+
 ```
 UPPFYLLT: ⭐⭐⭐⭐⭐ Excellent
 
@@ -237,6 +246,7 @@ BEVIS:
 ```
 
 **LM3 - UI/UX Design:**
+
 ```
 UPPFYLLT: ⭐⭐⭐⭐⭐ Excellent
 
@@ -264,7 +274,7 @@ Your Week 1 documentation is now complete! You have:
 ✅ **README_Collection/** - Organized by week/day with 6 detailed files  
 ✅ **Copy-paste content** ready for all LIA rapport pages  
 ✅ **Professional documentation** showing your progress  
-✅ **Evidence** för alla lärandemål  
+✅ **Evidence** för alla lärandemål
 
 ## 📝 Next Steps:
 
@@ -277,5 +287,5 @@ Your Week 1 documentation is now complete! You have:
 
 ---
 
-*Created: November 22, 2025*  
-*Ready for: Veckologg, Arbetsuppgifter, Måluppfyllelse, Utveckling*
+_Created: November 22, 2025_  
+_Ready for: Veckologg, Arbetsuppgifter, Måluppfyllelse, Utveckling_

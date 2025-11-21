@@ -12,12 +12,12 @@
 
 ```typescript
 export interface DemoScenario {
-  id: string;
-  name: string;
-  severity: 'critical' | 'high' | 'medium' | 'low';
-  icon: string;
-  description: string;
-  event: VerkadaEvent;
+  id: string
+  name: string
+  severity: 'critical' | 'high' | 'medium' | 'low'
+  icon: string
+  description: string
+  event: VerkadaEvent
 }
 
 export const DEMO_SCENARIOS: DemoScenario[] = [
@@ -35,11 +35,11 @@ export const DEMO_SCENARIOS: DemoScenario[] = [
       alarm_description: '🚨 CRITICAL: Unauthorized entry...',
       alarm_time: new Date().toISOString(),
       zone: 'Perimeter-North',
-      device_id: 'SENSOR-A1-001'
-    }
+      device_id: 'SENSOR-A1-001',
+    },
   },
   // ... 6 more scenarios
-];
+]
 ```
 
 **7 Demo Scenarios Created:**
@@ -63,22 +63,23 @@ export const DEMO_SCENARIOS: DemoScenario[] = [
       <h2>Demo Scenarios</h2>
       <div class="scenario-grid">
         @for (scenario of scenarios; track scenario.id) {
-          <button 
-            class="scenario-btn"
-            [class.critical]="scenario.severity === 'critical'"
-            (click)="triggerScenario(scenario)">
-            {{ scenario.icon }} {{ scenario.name }}
-          </button>
+        <button
+          class="scenario-btn"
+          [class.critical]="scenario.severity === 'critical'"
+          (click)="triggerScenario(scenario)"
+        >
+          {{ scenario.icon }} {{ scenario.name }}
+        </button>
         }
       </div>
     </div>
-  `
+  `,
 })
 export class DemoControlsComponent {
-  scenarios = DEMO_SCENARIOS;
-  
+  scenarios = DEMO_SCENARIOS
+
   triggerScenario(scenario: DemoScenario) {
-    this.verkadaService.postEvent(scenario.event).subscribe();
+    this.verkadaService.postEvent(scenario.event).subscribe()
   }
 }
 ```
@@ -100,31 +101,30 @@ export class DemoControlsComponent {
 ```typescript
 @Injectable({ providedIn: 'root' })
 export class VerkadaApiService {
-  private apiUrl = 'https://api.verkada.com/cameras/v1/analytics/helix/eu';
-  
+  private apiUrl = 'https://api.verkada.com/cameras/v1/analytics/helix/eu'
+
   constructor(private http: HttpClient) {}
-  
+
   postEvent(event: VerkadaEvent): Observable<any> {
     const headers = new HttpHeaders({
       'x-api-key': environment.verkadaApiKey,
-      'Content-Type': 'application/json'
-    });
-    
-    return this.http.post(`${this.apiUrl}/events`, event, { headers })
-      .pipe(
-        catchError(this.handleError),
-        retry(2)
-      );
+      'Content-Type': 'application/json',
+    })
+
+    return this.http
+      .post(`${this.apiUrl}/events`, event, { headers })
+      .pipe(catchError(this.handleError), retry(2))
   }
-  
+
   private handleError(error: HttpErrorResponse) {
-    console.error('API Error:', error);
-    return throwError(() => new Error('Failed to post event'));
+    console.error('API Error:', error)
+    return throwError(() => new Error('Failed to post event'))
   }
 }
 ```
 
 **CORS Proxy Implementation:**
+
 ```typescript
 // Development proxy configuration
 {
@@ -140,6 +140,7 @@ export class VerkadaApiService {
 ```
 
 **Features:**
+
 - ✅ Automatic retry on failure (max 2 retries)
 - ✅ Comprehensive error handling
 - ✅ Loading states för UX
@@ -150,18 +151,20 @@ export class VerkadaApiService {
 ### Step 6.5: Enhanced User Experience Features
 
 **Theme Switching:**
+
 ```typescript
 export class ThemeService {
-  private theme = signal<'light' | 'dark'>('light');
-  
+  private theme = signal<'light' | 'dark'>('light')
+
   toggleTheme() {
-    this.theme.update(t => t === 'light' ? 'dark' : 'light');
-    document.body.classList.toggle('dark-mode');
+    this.theme.update((t) => (t === 'light' ? 'dark' : 'light'))
+    document.body.classList.toggle('dark-mode')
   }
 }
 ```
 
 **Hover Animations:**
+
 ```css
 .event-card {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -174,12 +177,13 @@ export class ThemeService {
 ```
 
 **Responsive Design:**
+
 ```css
 @media (max-width: 768px) {
   .scenario-grid {
     grid-template-columns: 1fr; /* Stack på mobile */
   }
-  
+
   .glass-card {
     padding: 1rem; /* Mindre padding */
   }
@@ -191,6 +195,7 @@ export class ThemeService {
 ### Step 6.6 & 6.7: Testing & Production Build
 
 **Build Performance:**
+
 ```bash
 ng build --configuration production
 
@@ -203,12 +208,14 @@ Total Bundle Size: 271.7 KB ✅
 ```
 
 **Performance Optimizations:**
+
 - ✅ Lazy loading för routes
 - ✅ OnPush change detection strategy
 - ✅ TrackBy functions i ngFor loops
 - ✅ Optimized images och assets
 
 **Accessibility Validation:**
+
 ```bash
 npm run a11y-audit
 
@@ -219,6 +226,7 @@ npm run a11y-audit
 ```
 
 **Cross-Browser Testing:**
+
 - ✅ Chrome 120+ - Perfect
 - ✅ Firefox 121+ - Perfect
 - ✅ Safari 17+ - Perfect (med -webkit- prefixes)
@@ -231,31 +239,37 @@ npm run a11y-audit
 ### All Objectives Achieved! 🚀
 
 **Objective 1: API Setup & Authentication** ✅
+
 - Environment configuration
 - Session token management
 - Connectivity validation
 
 **Objective 2: Event Type Management** ✅
+
 - Schema understanding
 - Existing event type utilization
 - Creation limitation documentation
 
 **Objective 3: Event Posting** ✅
+
 - Basic posting
 - Official template adoption
 - Full attribute implementation
 
 **Objective 4: API Response Analysis** ✅
+
 - Response structure validation
 - Data integrity confirmation
 - Template consistency verification
 
 **Objective 5: Enhanced Alert System** ✅
+
 - Rich description formatting
 - Camera URL integration
 - Action-oriented messaging
 
 **Objective 6: Angular Frontend** ✅
+
 - Modern Angular 19 architecture
 - Glassmorphism UI design
 - 7 comprehensive demo scenarios
@@ -267,6 +281,7 @@ npm run a11y-audit
 ## 📊 Final Stats
 
 **Code Metrics:**
+
 - **18 Documentation Files** created
 - **~2,500 lines** of Python code
 - **~3,800 lines** of Angular/TypeScript code
@@ -274,12 +289,14 @@ npm run a11y-audit
 - **100% test coverage** on critical paths
 
 **API Performance:**
+
 - **150+ successful API calls** denna vecka
 - **100% success rate** (zero failures)
 - **Average response time:** 215ms
 - **Zero data loss** across all operations
 
 **Frontend Quality:**
+
 - **Bundle size:** 271.7 KB (excellent!)
 - **Lighthouse score:** 98/100
 - **Accessibility:** AAA compliance
@@ -290,9 +307,11 @@ npm run a11y-audit
 ## 🎓 Lärandemål - Full Week Analysis
 
 ### LM1 - Frontend Ramverk (Angular)
+
 **Achievement: Excellent** ⭐⭐⭐⭐⭐
 
 Implementerade komplett Angular 19 applikation från scratch:
+
 - Standalone components architecture
 - Server-side rendering (SSR)
 - Signals för reactive state
@@ -300,6 +319,7 @@ Implementerade komplett Angular 19 applikation från scratch:
 - TypeScript 5.6 type safety
 
 **Evidence:**
+
 - 12+ components created
 - Complete service layer
 - Type-safe models
@@ -308,9 +328,11 @@ Implementerade komplett Angular 19 applikation från scratch:
 ---
 
 ### LM2 - API Integration
+
 **Achievement: Excellent** ⭐⭐⭐⭐⭐
 
 Byggde robust integration med extern third-party API:
+
 - OAuth-style authentication flow
 - RESTful patterns (POST/GET)
 - Error handling och retry logic
@@ -318,6 +340,7 @@ Byggde robust integration med extern third-party API:
 - CORS proxy configuration
 
 **Evidence:**
+
 - 150+ successful API calls
 - Zero data loss
 - 100% success rate
@@ -326,9 +349,11 @@ Byggde robust integration med extern third-party API:
 ---
 
 ### LM3 - UI/UX Design
+
 **Achievement: Excellent** ⭐⭐⭐⭐⭐
 
 Skapade state-of-the-art modern interface:
+
 - Glassmorphism design system
 - Gradient backgrounds
 - Smooth animations (cubic-bezier)
@@ -336,6 +361,7 @@ Skapade state-of-the-art modern interface:
 - WCAG AAA compliance
 
 **Evidence:**
+
 - 10.2:1 contrast ratio (AAA)
 - Professional glassmorphism
 - Responsive design
@@ -344,9 +370,11 @@ Skapade state-of-the-art modern interface:
 ---
 
 ### LM4 - Professional Development Workflow
+
 **Achievement: Excellent** ⭐⭐⭐⭐⭐
 
 Följde strukturerad, dokumentation-driven approach:
+
 - Incremental objective completion
 - Systematic testing methodology
 - Version control best practices
@@ -354,6 +382,7 @@ Följde strukturerad, dokumentation-driven approach:
 - Comprehensive documentation
 
 **Evidence:**
+
 - 18 documentation files
 - Daily progress tracking
 - Clear objective structure
@@ -362,15 +391,18 @@ Följde strukturerad, dokumentation-driven approach:
 ---
 
 ### LM5 - User Experience & Innovation
+
 **Achievement: Excellent** ⭐⭐⭐⭐⭐
 
 Skapade innovative lösning som förbättrar real-world workflow:
+
 - Camera URL integration (93% response time reduction)
 - Action-oriented alert messages
 - One-click access to critical information
 - Rich contextual notifications
 
 **Evidence:**
+
 - 70% faster alarm response
 - Enhanced alert descriptions
 - Direct camera linking
@@ -384,6 +416,7 @@ Skapade innovative lösning som förbättrar real-world workflow:
 
 **1. Complete Full-Stack Implementation**
 Från zero till production-ready på 5 dagar! Detta visar:
+
 - Strong technical foundation från 2 års studier
 - Ability att lära mig quickly i nya environments
 - Professional code quality standards
@@ -395,6 +428,7 @@ Min proudest moment: när jag insåg att vi kunde länka direkt till Verkada cam
 
 **3. Documentation Excellence**
 18 detailed documentation files är unusual för en LIA student's first week, men det visar:
+
 - Professional mindset
 - Clear communication skills
 - Systematic thinking
@@ -404,17 +438,20 @@ Min proudest moment: när jag insåg att vi kunde länka direkt till Verkada cam
 ### Key Learnings
 
 **Technical:**
+
 - Angular 19 standalone components är future of Angular
 - Glassmorphism kräver careful accessibility consideration
 - API integration är more än bara "call endpoint" - error handling, retry logic, data validation är critical
 - TypeScript strict mode saves hours of debugging
 
 **Professional:**
+
 - Ask for help early (jag spenderade 2h på CORS issue som Rikard löste på 5min)
 - Document decisions (när jag undrade varför jag gjorde något, docs hade svaret)
 - Over-communicate progress (daily updates till Rikard byggde trust)
 
 **Personal:**
+
 - Jag kan leverera professional-grade kod
 - Mina 2 års studier har gett solid foundation
 - Jag trivs med structured, goal-oriented arbete
@@ -425,12 +462,14 @@ Min proudest moment: när jag insåg att vi kunde länka direkt till Verkada cam
 ### Areas för Fortsatt Utveckling
 
 **Next Week Focus:**
+
 1. **Backend Development** - Bygga Traxmate-Verkada bridge i Node.js/Go
 2. **Real Data Integration** - Connect till faktiska Traxmate alarm events
 3. **Testing** - Implement comprehensive test suite (Jest + Cypress)
 4. **Deployment** - Setup CI/CD pipeline
 
 **Skills att Förbättra:**
+
 - Go language (Traxmate använder Go för backend)
 - Docker containerization
 - Kubernetes orchestration
@@ -441,16 +480,19 @@ Min proudest moment: när jag insåg att vi kunde länka direkt till Verkada cam
 ## 🎯 Nästa Vecka Preview
 
 **Måndag 25/11:**
+
 - Möte med Rikard: Vecka 1 review + Vecka 2 planning
 - Börja backend API development (Node.js eller Go)
 - Setup database för event logging
 
 **Tisdag-Onsdag:**
+
 - Implement Traxmate alarm event listener
 - Build bridge mellan Traxmate → Verkada
 - Test med real alarm data
 
 **Torsdag-Fredag:**
+
 - Frontend enhancements baserat på real data
 - Performance optimization
 - Deployment preparation
@@ -459,20 +501,21 @@ Min proudest moment: när jag insåg att vi kunde länka direkt till Verkada cam
 
 ## ⏰ Friday Tidrapport
 
-| Aktivitet | Tid |
-|-----------|-----|
-| Demo control system implementation | 2.5h |
-| API integration frontend | 2h |
-| UX enhancements (theme, animations) | 1.5h |
-| Testing & production build | 1h |
-| Week documentation & reflection | 1h |
-| **Total** | **8h** |
+| Aktivitet                           | Tid    |
+| ----------------------------------- | ------ |
+| Demo control system implementation  | 2.5h   |
+| API integration frontend            | 2h     |
+| UX enhancements (theme, animations) | 1.5h   |
+| Testing & production build          | 1h     |
+| Week documentation & reflection     | 1h     |
+| **Total**                           | **8h** |
 
 ---
 
 ## 📈 Week 1 Total Hours: 37h
 
 **Daily Breakdown:**
+
 - Måndag: 6.5h
 - Tisdag: 7.5h
 - Onsdag: 7.5h
@@ -486,12 +529,14 @@ Min proudest moment: när jag insåg att vi kunde länka direkt till Verkada cam
 ## 🙏 Acknowledgments
 
 **Rikard (COO):**
+
 - Tydlig project direction
 - Quick feedback på questions
 - Trust att låta mig innovate (camera URLs)
 - Code review och mentorship
 
 **Traxmate Team:**
+
 - Welcoming environment
 - Patient med mina questions
 - Inclusive i team discussions
@@ -502,6 +547,7 @@ Min proudest moment: när jag insåg att vi kunde länka direkt till Verkada cam
 ## 🚀 Looking Forward
 
 Vecka 1 satte en stark foundation. Jag känner mig:
+
 - ✅ Confident i mina technical abilities
 - ✅ Comfortable i team environment
 - ✅ Excited för nästa veckas challenges
@@ -514,9 +560,9 @@ Efter Week 1: **På rätt väg! 🎯**
 
 ---
 
-*Dokumenterat: 22 November 2025, 17:00*  
-*Status: Week 1 Complete ✅ (6/6 Objectives, 100%)*  
-*Next: Week 2 Planning - Backend Development Focus*
+_Dokumenterat: 22 November 2025, 17:00_  
+_Status: Week 1 Complete ✅ (6/6 Objectives, 100%)_  
+_Next: Week 2 Planning - Backend Development Focus_
 
 ---
 

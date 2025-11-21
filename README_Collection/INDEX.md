@@ -30,9 +30,11 @@ README_Collection/
 ## 🗓️ Week 1: Traxmate-Verkada Integration (Nov 18-22, 2025)
 
 ### Quick Summary
+
 Complete full-stack integration of Traxmate alarm system with Verkada Helix API, including modern Angular 19 frontend with glassmorphism UI design.
 
 ### Key Achievements
+
 - ✅ Robust Python API integration with 100% success rate
 - ✅ Enhanced alert system with camera URL integration (93% faster response)
 - ✅ Modern Angular 19 frontend with AAA accessibility
@@ -40,6 +42,7 @@ Complete full-stack integration of Traxmate alarm system with Verkada Helix API,
 - ✅ 18 detailed documentation files
 
 ### Files
+
 - **[WEEK_OVERVIEW.md](./Week_1_Nov_18-22/WEEK_OVERVIEW.md)** - Complete week summary
 - **[Monday: Onboarding](./Week_1_Nov_18-22/Monday_Nov_18/ONBOARDING.md)** - First day setup
 - **[Tuesday: API Foundation](./Week_1_Nov_18-22/Tuesday_Nov_19/API_FOUNDATION.md)** - Authentication & connectivity
@@ -48,11 +51,13 @@ Complete full-stack integration of Traxmate alarm system with Verkada Helix API,
 - **[Friday: Frontend Completion](./Week_1_Nov_18-22/Friday_Nov_22/FRONTEND_COMPLETION.md)** - Final implementation & week reflection
 
 ### Technologies Used
+
 **Backend:** Python, Verkada Helix API, Requests library  
 **Frontend:** Angular 19, TypeScript 5.6, RxJS, Glassmorphism CSS  
 **Tools:** VS Code, Git, npm, pip
 
 ### Lärandemål Coverage
+
 - **LM1 - Frontend Ramverk:** ⭐⭐⭐⭐⭐ (Angular 19 full implementation)
 - **LM2 - API Integration:** ⭐⭐⭐⭐⭐ (Verkada API with 100% success)
 - **LM3 - UI/UX Design:** ⭐⭐⭐⭐⭐ (AAA accessibility + glassmorphism)
@@ -64,6 +69,7 @@ Complete full-stack integration of Traxmate alarm system with Verkada Helix API,
 ## 📊 Overall Progress
 
 ### LIA Timeline
+
 - **Start Date:** November 18, 2025
 - **End Date:** May 15, 2026 (projected)
 - **Duration:** 6 months / 26 weeks
@@ -71,6 +77,7 @@ Complete full-stack integration of Traxmate alarm system with Verkada Helix API,
 - **Supervisor:** Rikard (COO)
 
 ### Completion Status
+
 - ✅ **Week 1** - Verkada Integration Complete (100%)
 - ⏳ **Week 2** - Backend Development (upcoming)
 - ⏳ **Week 3-26** - TBD
@@ -80,7 +87,9 @@ Complete full-stack integration of Traxmate alarm system with Verkada Helix API,
 ## 🎯 How to Use This Collection
 
 ### For LIA Report
+
 Copy content from these files into your LIA rapport application:
+
 1. **Weekly summaries** → Veckologgar
 2. **Daily details** → Dagliga loggar
 3. **Technical achievements** → Arbetsuppgifter
@@ -88,14 +97,18 @@ Copy content from these files into your LIA rapport application:
 5. **Lärandemål mapping** → Måluppfyllelse
 
 ### For Presentations
+
 Use this documentation when:
+
 - Presenting to Verkada
 - Demonstrating to Traxmate stakeholders
 - Creating portfolio material
 - Writing final LIA report
 
 ### For Future Reference
+
 Reference when:
+
 - Continuing similar projects
 - Explaining technical decisions
 - Training new team members
@@ -106,6 +119,7 @@ Reference when:
 ## 📈 Statistics
 
 ### Week 1 Numbers
+
 - **Documentation Files:** 18
 - **Lines of Code:** ~6,300 total
   - Python: ~2,500 lines
@@ -129,16 +143,19 @@ Reference when:
 ## ✨ Highlights
 
 ### Innovation: Camera URL Integration
+
 Reduced alarm response time by **93%** through direct camera linking in alert descriptions.
 
 ### Design Excellence
+
 Achieved **WCAG AAA** accessibility (10.2:1 contrast ratio) while maintaining modern glassmorphism aesthetic.
 
 ### Professional Quality
+
 **100% API success rate** across 150+ calls with zero data loss.
 
 ---
 
-*Last Updated: November 22, 2025*  
-*Maintained by: [Your Name]*  
-*LIA Company: Traxmate*
+_Last Updated: November 22, 2025_  
+_Maintained by: [Your Name]_  
+_LIA Company: Traxmate_

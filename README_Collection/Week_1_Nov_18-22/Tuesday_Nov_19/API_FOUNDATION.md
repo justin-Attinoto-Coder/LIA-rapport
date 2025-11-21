@@ -11,6 +11,7 @@
 **Genomförande:**
 
 1. **Skapade `VerkadaHelixTester` klass:**
+
    ```python
    class VerkadaHelixTester:
        def __init__(self):
@@ -21,6 +22,7 @@
    ```
 
 2. **Implementerade automatic token refresh:**
+
    - Token expire check innan varje API call
    - Automatic renewal när token går ut
    - Graceful 401 error handling
@@ -46,11 +48,14 @@
 **Uppgift**: Validera alla Verkada Helix API endpoints.
 
 **Test Cases:**
+
 1. **POST /events** - Skapa nya events
+
    - Status: ✅ 200 OK
    - Response time: ~250ms
 
 2. **GET /events** - Hämta events
+
    - Status: ✅ 200 OK
    - Response time: ~180ms
 
@@ -60,6 +65,7 @@
    - Region routing: ✅ EU confirmed
 
 **Network Performance Baseline:**
+
 - Average API response time: 215ms
 - Success rate: 100% (20/20 test calls)
 - Zero timeout errors
@@ -76,7 +82,7 @@ Lärde mig att Verkada använder pre-defined event types med strict schemas:
 ```json
 {
   "alarm_type": "string",
-  "location": "string", 
+  "location": "string",
   "severity": "string",
   "customer_name": "string",
   "alarm_description": "string",
@@ -90,6 +96,7 @@ Lärde mig att Verkada använder pre-defined event types med strict schemas:
 Verkada admin bekräftade att deras officiella template kräver alla 8 attribut för data consistency.
 
 **Key Learning:**
+
 - Event types enforce data consistency
 - Schemas är immutable efter creation
 - Existing event types can be reused
@@ -99,19 +106,24 @@ Verkada admin bekräftade att deras officiella template kräver alla 8 attribut 
 ## 🎓 Lärandemål Uppfyllelse
 
 ### LM2 - API Integration (Primary Focus)
+
 ✅ **Authentication Flows:**
+
 - Implementerade OAuth-style session token system
 - Hanterade token lifecycle (creation, refresh, expiration)
 - Byggde robust error handling för auth failures
 
 ✅ **RESTful API Patterns:**
+
 - POST requests för event creation
 - GET requests för event retrieval
 - Proper HTTP header management
 - JSON payload construction
 
 ### LM4 - Professional Development Workflow
+
 ✅ **Testing Methodology:**
+
 - Wrote test cases innan implementation
 - Validated each endpoint systematically
 - Documented baseline performance metrics
@@ -124,12 +136,14 @@ Idag fick jag riktigt djupdyka i API-integration! Speciellt lärorikt var:
 
 **Authentication Complexity:**
 Att bygga automatic token refresh var mer complex än förväntat. Jag lärde mig vikten av:
+
 - Defensive programming (check innan varje call)
 - Graceful error handling (inte bara crash vid 401)
 - Token expiry prediction (inte vänta tills det är för sent)
 
 **Real-world API Behavior:**
 Verkada's API är mycket robust, men jag stötte på:
+
 - Occasional latency spikes (up to 500ms)
 - Importance of retry logic
 - Need för timeout configuration
@@ -142,11 +156,13 @@ Rikard hjälpte mig förstå skillnaden mellan development och production API ke
 ## 🚧 Utmaningar & Lösningar
 
 ### Utmaning 1: 401 Errors
+
 **Problem:** Fick sporadiska 401 errors trots valid API key.  
 **Root Cause:** Token expiration inte hanterad.  
 **Lösning:** Implementerade `_ensure_valid_token()` check före varje call.
 
 ### Utmaning 2: Environment Variables
+
 **Problem:** `.env` file inte loaded korrekt på företagets server.  
 **Root Cause:** Wrong path to `.env` file.  
 **Lösning:** Använd absolute path med `python-dotenv`.
@@ -156,12 +172,14 @@ Rikard hjälpte mig förstå skillnaden mellan development och production API ke
 ## 📈 Progress Tracking
 
 **Completerade Objectives:**
+
 - ✅ Objective 1.1: Environment Setup
 - ✅ Objective 1.2: API Authentication
 - ✅ Objective 1.3: Connectivity Testing
 - 🔄 Objective 2.1: Event Type Understanding (50% done)
 
 **Tomorrow's Goals:**
+
 - Slutför Objective 2: Event Type Management
 - Börja Objective 3: Event Posting Implementation
 
@@ -169,15 +187,15 @@ Rikard hjälpte mig förstå skillnaden mellan development och production API ke
 
 ## ⏰ Tidrapport
 
-| Aktivitet | Tid |
-|-----------|-----|
-| API Authentication implementation | 3h |
-| Connectivity testing & validation | 2h |
-| Event type schema analysis | 1.5h |
-| Dokumentation & code review | 1h |
-| **Total** | **7.5h** |
+| Aktivitet                         | Tid      |
+| --------------------------------- | -------- |
+| API Authentication implementation | 3h       |
+| Connectivity testing & validation | 2h       |
+| Event type schema analysis        | 1.5h     |
+| Dokumentation & code review       | 1h       |
+| **Total**                         | **7.5h** |
 
 ---
 
-*Dokumenterat: 19 November 2025, 17:45*  
-*Status: Objectives 1.2-1.3 ✅ | Objective 2.1 🔄 50%*
+_Dokumenterat: 19 November 2025, 17:45_  
+_Status: Objectives 1.2-1.3 ✅ | Objective 2.1 🔄 50%_
